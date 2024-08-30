@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using IS.Domain.Interfaces;
+using IS.Domain.Interfaces.Repositories;
 using IS.Infrastructure.Databases.Contexts;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,9 +26,16 @@ public class BaseRepository<TEntity, TId> : IBaseRepository<TEntity, TId> where 
     public async Task<TEntity?> GetByIdAsync(TId id, CancellationToken cancellationToken = default) =>
         await _table.FindAsync(id, cancellationToken);
 
-    public async Task<TEntity?> GetOneAsync(Expression<Func<TEntity, bool>> predicate,
-        CancellationToken cancellationToken = default) =>
+    public async Task<TEntity?> GetOneAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default) =>
         await _table.FirstOrDefaultAsync(predicate, cancellationToken);
+    
+    public TEntity? GetOne(Expression<Func<TEntity, bool>> predicate) => _table.FirstOrDefault(predicate);
+
+    public bool IsExist(Expression<Func<TEntity, bool>> predicate, out TEntity entity)
+    {
+        entity = _table.FirstOrDefault(predicate);
+        return entity != null;
+    }
 
     public async Task AddAsync(TEntity entity, CancellationToken cancellationToken = default) =>
         await _table.AddAsync(entity, cancellationToken);
