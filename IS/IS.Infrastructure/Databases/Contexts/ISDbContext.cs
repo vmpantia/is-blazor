@@ -1,4 +1,5 @@
 ﻿using IS.Domain.Models.Entities;
+using IS.Domain.Models.Enums;
 using IS.Domain.Stubs;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,9 @@ public class ISDbContext : DbContext
         {
             // Set initial data
             emp.HasData(_stubEmployees);
+            
+            // Set initial filter
+            emp.HasQueryFilter(data => data.Status != Status.Deleted);
         });
     }
 }

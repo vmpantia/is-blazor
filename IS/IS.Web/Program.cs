@@ -1,3 +1,4 @@
+using IS.Core.Extensions;
 using IS.Infrastructure.Extensions;
 using IS.Web.Components;
 
@@ -5,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddCore();
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();

@@ -1,0 +1,62 @@
+﻿@page "/Employees"
+@using IS.Core.Queries.Models.Employee
+@attribute [StreamRendering]
+@inject IMediator _mediator
+
+<h1>Employees</h1>
+
+@if (_employees is null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Birth Date</th>
+                <th>Gender</th>
+                <th>Phone No.</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Last Modified On</th>
+                <th>Last Modified By</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in _employees)
+            {
+                <tr>
+                    <td>@employee.Email</td>
+                    <td>@employee.FirstName @employee.LastName</td>
+                    <td>@employee.BirthDate.ToShortDateString()</td>
+                    <td>@employee.Gender</td>
+                    <td>@employee.PhoneNumber</td>
+                    <td>@employee.Address</td>
+                    <td>@employee.Status</td>
+                    <td>@employee.LastModifiedOn.ToShortDateString()</td>
+                    <td>@employee.LastModifiedBy</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    // Fields
+    private IEnumerable<EmployeeDto>? _employees = null;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        // Simulate asynchronous loading to demonstrate streaming rendering
+        await Task.Delay(500);
+        
+        // Get employees in the database
+        var query = new GetEmployeesQuery();
+        _employees = await _mediator.Send(query);
+    }
+}

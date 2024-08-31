@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IS.Domain", "IS.Domain\IS.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IS.Web", "IS.Web\IS.Web.csproj", "{86C511D1-0483-476D-B348-0F3B48E6DC4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IS.Core", "IS.Core\IS.Core.csproj", "{CFEAED7D-FE40-42F8-A4B4-9456A9AD592B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{86C511D1-0483-476D-B348-0F3B48E6DC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86C511D1-0483-476D-B348-0F3B48E6DC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86C511D1-0483-476D-B348-0F3B48E6DC4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFEAED7D-FE40-42F8-A4B4-9456A9AD592B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFEAED7D-FE40-42F8-A4B4-9456A9AD592B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFEAED7D-FE40-42F8-A4B4-9456A9AD592B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFEAED7D-FE40-42F8-A4B4-9456A9AD592B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
